@@ -6,5 +6,5 @@ class User < ApplicationRecord
   #これがないとpassword_confirmation属性が追加されない
   validates :password, confirmation: true, if: ->{new_record? || crypted_password_chabged? } 
   validates :password_confirmation, presence: true, if: ->{new_record? || crypted_password_chabged? }
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 end
