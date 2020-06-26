@@ -1,14 +1,14 @@
 h1 Sign Up
 
 =form_with model: @user, local: true do |f|
-    div
-        =f.label :email
-        =f.text_field :email
-    div
-        =f.label :password
-        =f.password_field :password
-    div
-        =f.label :password_confirmation
-        =f.password_field :password_confirmation
-    =f.submit nil
+  div
+    =f.label :email
+    =f.text_field :email
+  div
+    =f.label :password
+    =f.password_field :password
+  div
+    =f.label :password_confirmation
+    =f.password_field :password_confirmation
+  =f.submit nil
 

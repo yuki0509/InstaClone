@@ -1,0 +1,9 @@
+h1 Log in
+= form_with scope: :session,url: login_path, local: true do |f|
+	div
+		=f.label :email
+		=f.text_field :email
+	div
+		=f.label :password
+		=f.password_field :password
+	=f.submit "Log in"
