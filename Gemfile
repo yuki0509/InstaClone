@@ -64,8 +64,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'slim-rails'
 gem 'html2slim'
 gem 'sorcery'
-#rubyのコーディングをチェックするためのgem
+# rubyのコーディングをチェックするためのgem
 gem 'rubocop'
 gem 'rubocop-rails'
-#インメモリ型のNoSQL。キー、バリューの形式でデータを保存する。
+# インメモリ型のNoSQL。キー、バリューの形式でデータを保存する。
 gem 'redis-rails'
