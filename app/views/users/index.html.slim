@@ -1,1 +1,4 @@
 = link_to "ログアウト", logout_path, method: :delete 
+
+- @users.each do |user|
+  = user.email
