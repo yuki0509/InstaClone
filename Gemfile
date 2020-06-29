@@ -71,3 +71,4 @@ gem 'rubocop'
 gem 'rubocop-rails'
 # インメモリ型のNoSQL。キー、バリューの形式でデータを保存する。
 gem 'redis-rails'
+gem 'pry-rails'
