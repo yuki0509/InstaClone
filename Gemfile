@@ -72,7 +72,9 @@ gem 'rubocop-rails'
 # インメモリ型のNoSQL。キー、バリューの形式でデータを保存する。
 gem 'redis-rails'
 gem 'pry-rails'
+gem 'pry-byebug'
 # 各モデルのスキーマ情報をファイルの先頭にコメントとして書き出す
 gem 'annotate'
 # 国際化
 gem 'rails-i18n'
+
