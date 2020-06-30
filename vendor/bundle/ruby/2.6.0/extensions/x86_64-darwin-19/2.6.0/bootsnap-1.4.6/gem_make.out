@@ -1,0 +1,15 @@
+current directory: /Users/harayuuki/InstaClone/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+/Users/harayuuki/.rbenv/versions/2.6.4/bin/ruby -I /Users/harayuuki/.rbenv/versions/2.6.4/lib/ruby/2.6.0 -r ./siteconf20200630-4971-15mq6qd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/harayuuki/InstaClone/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/harayuuki/InstaClone/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/harayuuki/InstaClone/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20200630-4971-1apmz6r/bootsnap
