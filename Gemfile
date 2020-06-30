@@ -74,5 +74,5 @@ gem 'redis-rails'
 gem 'pry-rails'
 # 各モデルのスキーマ情報をファイルの先頭にコメントとして書き出す
 gem 'annotate'
-#国際化
+# 国際化
 gem 'rails-i18n'
