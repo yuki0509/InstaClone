@@ -12,5 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
+//マテリアルデザインのbootstrapをnode_moduleディレクトリから読み込み
 //= require bootstrap-material-design/dist/js/bootstrap-material-design.js
 //= require_tree .

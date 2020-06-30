@@ -17,6 +17,13 @@ module InstaClone
       g.skip_routes true
       g.test_framework false
     end
+
+    #Railsが表示の際に扱うタイムゾーン
+    config.time_zone = 'Asia/Tokyo'
+
+    #ActiverecordがDBへの読み書きを行う際のタイムゾーン
+    config.active_record.default_timezone = :local
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
