@@ -24,6 +24,10 @@ module InstaClone
     #ActiverecordがDBへの読み書きを行う際のタイムゾーン
     config.active_record.default_timezone = :local
 
+    config.i18n.default_locale = :ja
+    #config/locale以下のファイルが読み込めるようにパスを通す
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

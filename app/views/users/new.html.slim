@@ -1,13 +1,18 @@
-h1 Sign Up
+h1 ユーザー登録
 
-=form_with model: @user, local: true do |f|
-  div
-    =f.label :email
-    =f.text_field :email
-  div
-    =f.label :password
-    =f.password_field :password
-  div
-    =f.label :password_confirmation
-    =f.password_field :password_confirmation
-  =f.submit nil
+.card
+  .card-body
+    =form_with model: @user, local: true do |f|
+      .md-form.mb-3
+        =f.label :name
+        =f.text_field :name, class: 'form-control'
+      .md-form.mb-3
+        =f.label :email
+        =f.text_field :email, class: 'form-control'
+      .md-form.mb-3
+        =f.label :password
+        =f.password_field :password, class: 'form-control'
+      .md-form.mb-3
+        =f.label :password_confirmation
+        =f.password_field :password_confirmation, class: 'form-control'
+      =f.submit nil, class: 'btn btn-primary btn-raised'
