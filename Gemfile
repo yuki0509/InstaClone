@@ -77,4 +77,3 @@ gem 'pry-byebug'
 gem 'annotate'
 # 国際化
 gem 'rails-i18n'
-

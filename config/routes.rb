@@ -1,4 +1,4 @@
-#annotateで作成された
+# annotateで作成された
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action

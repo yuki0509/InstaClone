@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #メールアドレスやパスワードを使い自動でログインする
+      # メールアドレスやパスワードを使い自動でログインする
       auto_login(@user)
-      redirect_to login_path, success: "ユーザーが作成されました"
+      redirect_to login_path, success: 'ユーザーが作成されました'
     else
       render :new
     end
