@@ -1,13 +1,18 @@
-.card.mt-3
-  .card-body
-    h3.card-subtitle.text-center.mb-2 ログイン
-    = form_with scope: :session,url: login_path, local: true do |f|
-      .md-form.mb-3
-        =f.label :email
-        =f.text_field :email, class: 'form-control'
-      .md-form.mb-3
-        =f.label :password
-        =f.password_field :password, class: 'form-control'
-        =f.submit "ログイン",class: 'btn btn-raised btn-primary mt-2'
+.login-register-form
+  .login-register-form-inner
+    .card.mb-3
+        = form_with scope: :session,url: login_path, class: 'card-body',local: true do |f|
+          .md-form.mb-3
+            =f.label :email
+            =f.text_field :email, class: 'form-control'
+          .md-form.mb-3
+            =f.label :password
+            =f.password_field :password, class: 'form-control'
+            =f.submit "ログイン",class: 'btn btn-raised btn-primary mt-2'
+    .card
+      .card-body
+        | アカウントをお持ちで出ないですか？
+        = link_to '登録する', new_user_path 
+    
 
-= link_to 'ユーザー登録', new_user_path 
+
