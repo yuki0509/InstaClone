@@ -69,5 +69,6 @@ gem 'annotate'
 gem 'faker'
 #画像投稿用のgem
 gem 'carrierwave'
+gem 'mini_magick'
 #fontawsomeを利用できるようにする
 gem 'font-awesome-sass'
