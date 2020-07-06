@@ -11,6 +11,7 @@ ja:
         username: 'ユーザー名'
       post: 
         body: '本文'
+        images: '画像'
 
   attributes:
     created_at: '作成日時'

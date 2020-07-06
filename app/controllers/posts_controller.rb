@@ -41,7 +41,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body)
+    #imagesカラムに画像のパスを保存できるようにした
+    params.require(:post).permit(:body, {images:[]} )
   end
   
   def set_post
