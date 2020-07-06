@@ -65,5 +65,7 @@ gem 'redis-rails'
 gem 'rails-i18n'
 #各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
 gem 'annotate'
+#ダミーデータをランダムに生成する
+gem 'faker'
 #fontawsomeを利用できるようにする
 gem 'font-awesome-sass'
