@@ -67,5 +67,7 @@ gem 'rails-i18n'
 gem 'annotate'
 #ダミーデータをランダムに生成する
 gem 'faker'
+#画像投稿用のgem
+gem 'carrierwave'
 #fontawsomeを利用できるようにする
 gem 'font-awesome-sass'
