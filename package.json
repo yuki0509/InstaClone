@@ -1,5 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "InstaClone",
   "private": true,
   "dependencies": {}
+=======
+  "name": "insta_clone_app",
+  "private": true,
+  "dependencies": {
+    "bootstrap-material-design": "4.1.1"
+  }
+>>>>>>> daison_clone/feature/01_login_logout
 }
