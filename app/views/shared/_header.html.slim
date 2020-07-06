@@ -6,15 +6,15 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white
     form.form-inline.my-2.my-lg-0.mr-auto
       input.form-control.mr-sm-2 placeholder="Search" type="search" /
       button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  Search
-    ul.navbar-nav.mt-2.mt-lg-0
-      li.nav-item
-        a.nav-link href="#"
-          = icon 'far', 'image', class: 'fa-lg'
-      li.nav-item
-        a.nav-link href="#"
-          = icon 'far', 'heart', class: 'fa-lg'
-      li.nav-item
-        a.nav-link href="#"
-          = icon 'far', 'user', class: 'fa-lg'
-      li.nav-item
-        = link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete
+    / ul.navbar-nav.mt-2.mt-lg-0
+    /   li.nav-item
+    /     a.nav-link href="#"
+    /       = icon 'far', 'image', class: 'fa-lg'
+    /   li.nav-item
+    /     a.nav-link href="#"
+    /       = icon 'far', 'heart', class: 'fa-lg'
+    /   li.nav-item
+    /     a.nav-link href="#"
+    /       = icon 'far', 'user', class: 'fa-lg'
+    li.nav-item
+      = link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete

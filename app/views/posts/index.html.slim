@@ -1,0 +1,5 @@
+- @posts.each do |post|
+  .card.mb-5
+    .card-body
+      =post.body
+    = link_to  "削除", post_path(post), method: :delete 

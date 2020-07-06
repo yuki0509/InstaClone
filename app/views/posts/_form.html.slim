@@ -1,0 +1,9 @@
+.card
+  .card-body
+    = form_with model: post, local: true do |f|
+      = render 'shared/error_messages', object: post
+      .form-group
+        = f.label :body
+        = f.text_field :body, class: 'form-control'
+
+      = f.submit nil, class: 'btn btn-primary btn-raised'

@@ -30,13 +30,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'sorcery'
-gem 'slim-rails'
-gem 'html2slim'
-gem 'redis-rails'
-gem 'rails-i18n'
-#各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
-gem 'annotate'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -65,3 +58,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'sorcery'
+gem 'slim-rails'
+gem 'html2slim'
+gem 'redis-rails'
+gem 'rails-i18n'
+#各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
+gem 'annotate'
+#fontawsomeを利用できるようにする
+gem 'font-awesome-sass'
