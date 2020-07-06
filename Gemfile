@@ -32,8 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'sorcery'
 gem 'slim-rails'
+gem 'html2slim'
 gem 'redis-rails'
 gem 'rails-i18n'
+#各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
 gem 'annotate'
 
 # Reduces boot times through caching; required in config/boot.rb
