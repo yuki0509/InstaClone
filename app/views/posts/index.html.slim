@@ -1,6 +1,8 @@
 - @posts.each do |post|
   .card.mb-5
     .card-body
-      =image_tag post.images[0].url
+      //配列型式で受け取ったものをブロック変数に入れて複数画像を表示させる。
+      - post.images.each do |image|
+        =image_tag image.url
       =post.body
     = link_to  "削除", post_path(post), method: :delete 
