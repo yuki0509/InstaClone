@@ -1,8 +1,28 @@
-- @posts.each do |post|
-  .card.mb-5
-    .card-body
-      //配列型式で受け取ったものをブロック変数に入れて複数画像を表示させる。
-      - post.images.each do |image|
-        =image_tag image.url
-      =post.body
-    = link_to  "削除", post_path(post), method: :delete 
+.container
+  .row
+    .col-md-8.col-12
+      = render @posts
+    / .col-md-4.col-12
+    /   - if logged_in?
+    /     .profile-box.mb-3
+          / = image_tag 'profile-placeholder.png', size: '50x50', class: 'rounded-circle mr-1'
+          = current_user.username
+      / .users-box
+      /   .card
+      /     .card-header
+      /       | ユーザー
+      /     .card-body
+      /       .user.mb-3
+      /         = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+      /         | ダミー京介
+      /       .user.mb-3
+      /         = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+      /         | ダミー寅泰
+      /       .user.mb-3
+      /         = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+      /         | ダミー常松
+      /       .user.mb-3
+      /         = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+      /         | ダミーまこと
+      /     .card-footer
+      /       = link_to 'すべて見る', '#'
