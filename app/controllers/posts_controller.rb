@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  
   #current_userはsorceryで与えられたメソッド
   def index
     @posts = current_user.posts.all
@@ -41,7 +42,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    #imagesカラムに画像のパスを保存できるようにした
+    #images:[]とすることで複数ファイルが保存できる
     params.require(:post).permit(:body, {images:[]} )
   end
   

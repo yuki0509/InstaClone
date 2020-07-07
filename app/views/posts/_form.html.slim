@@ -5,7 +5,7 @@
       .form-group
         = f.label :images
         / mulitple: trueで複数ファイルをアップロード
-        = f.file_field :images, multiple: true, class: 'form-control'
+        = f.file_field :images, multiple: true
       .form-group
         = f.label :body
         = f.text_field :body, class: 'form-control'
