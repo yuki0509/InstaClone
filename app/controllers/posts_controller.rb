@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
+  before_action :require_login 
   before_action :set_post, only: %i[show edit update destroy]
   
   #current_userはsorceryで与えられたメソッド
   def index
-    @posts = current_user.posts.all
+    @posts = current_user.posts.all.order(created_at: :desc)
   end
 
   def new
@@ -44,9 +45,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    
-    binding.pry
-    
     #images:[]とすることで複数ファイルが保存できる
     params.require(:post).permit(:body, images:[])
   end
