@@ -12,6 +12,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    
+    
     if @post.save
       redirect_to posts_path, success: '投稿しました'
     else
@@ -42,8 +44,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
+    
+    binding.pry
+    
     #images:[]とすることで複数ファイルが保存できる
-    params.require(:post).permit(:body, {images:[]} )
+    params.require(:post).permit(:body, images:[])
   end
   
   def set_post

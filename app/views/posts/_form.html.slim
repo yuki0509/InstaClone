@@ -1,13 +1,12 @@
-.card
-  .card-body
-    = form_with model: post, local: true do |f|
-      = render 'shared/error_messages', object: post
-      .form-group
-        = f.label :images
-        / mulitple: trueで複数ファイルをアップロード
-        = f.file_field :images, multiple: true
-      .form-group
-        = f.label :body
-        = f.text_field :body, class: 'form-control'
-
-      = f.submit nil, class: 'btn btn-primary btn-raised'
+= form_with model: post, local: true do |f|
+  = render 'shared/error_messages', object: post
+  .form-group
+    = f.label :images
+    / mulitple: trueで複数ファイルをアップロード
+    = f.file_field :images, multiple: true, class: 'form-control'
+    - post.images.each do |image|
+      = image_tag image.url, class: 'image-thumbnail' 
+  .form-group
+    = f.label :body
+    = f.text_field :body, class: 'form-control'
+  = f.submit nil, class: 'btn btn-primary btn-raised'

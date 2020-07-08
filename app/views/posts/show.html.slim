@@ -1,2 +1,19 @@
-div
-  = @post.body
+.post-detail.card
+  .image-box
+    .swiper-container
+      .swiper-wrapper
+        //配列型式で受け取ったものをブロック変数に入れて複数画像を表示させる。
+        - @post.images.each do |image|
+          .swiper-slide
+            = image_tag image.url
+      .swiper-pagination
+  .image-info-box
+    .profile-box.p-3
+      .d-flex.align-items-center
+        = @post.user.username
+        - if current_user&.own?(@post)
+          .ml-auto
+            = link_to post_path(@post), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'} do
+              = icon 'far', 'trash-alt', class: 'fa-lg'
+            = link_to edit_post_path(@post) do
+              = icon 'far', 'edit', class: 'fa-lg'
