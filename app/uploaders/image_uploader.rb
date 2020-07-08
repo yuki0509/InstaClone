@@ -1,15 +1,15 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  
-  #画像リサイズ
+
+  # 画像リサイズ
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  
-  #アップロードしたファイルはpublicディレクトリ以下に保存される
+
+  # アップロードしたファイルはpublicディレクトリ以下に保存される
   storage :file
-  
+
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

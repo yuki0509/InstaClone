@@ -59,6 +59,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #セッションの管理場所をredisサーバーに変更。セッションデータをredisサーバーに保存してcookieにはセッションIDだけ入れる。
+  # セッションの管理場所をredisサーバーに変更。セッションデータをredisサーバーに保存してcookieにはセッションIDだけ入れる。
   config.session_store :redis_store, servers: 'redis://localhost:6379', expire_after: 1.day
 end

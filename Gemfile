@@ -16,7 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -29,7 +28,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -63,12 +61,12 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'redis-rails'
 gem 'rails-i18n'
-#各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
+# 各モデルのスキーマ情報を書き出す。ルーティング情報も見れる
 gem 'annotate'
-#ダミーデータをランダムに生成する
+# ダミーデータをランダムに生成する
 gem 'faker'
-#画像投稿用のgem
+# 画像投稿用のgem
 gem 'carrierwave'
 gem 'mini_magick'
-#fontawsomeを利用できるようにする
+# fontawsomeを利用できるようにする
 gem 'font-awesome-sass'

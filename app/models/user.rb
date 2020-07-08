@@ -29,5 +29,4 @@ class User < ApplicationRecord
   def own?(object)
     self.id = object.id
   end
-  
 end
