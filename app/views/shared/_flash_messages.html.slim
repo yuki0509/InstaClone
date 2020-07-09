@@ -1,0 +1,4 @@
+/flashで渡されたキーによって色を変える
+- flash.each do |key, value|
+  /divタグにvalueの文章を入れる
+  = content_tag(:div, value, class: "alert alert-#{key}")

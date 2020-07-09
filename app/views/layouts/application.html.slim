@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | InstaClone
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    /sorceryが提供するメソッド（logged_in? -> ログインの有無をtrue or falseで返す)
+    - if logged_in?
+      = render 'shared/before_login_header' 
+    - else
+      = render 'shared/before_login_header' 
+    = render 'shared/flash_messages' 
+    = yield

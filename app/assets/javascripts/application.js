@@ -10,7 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//node_moduleディレクトから読み込み
+//= require jquery/dist/jquery.js
+//node_moduleディレクトから読み込み
+//= require popper.js/dist/popper.js
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//マテリアルデザインのbootstrapをnode_moduleディレクトリから読み込み
+//= require bootstrap-material-design/dist/js/bootstrap-material-design.js
 //= require_tree .
