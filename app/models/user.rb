@@ -23,4 +23,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || crypted_password_chabged? }
   validates :password_confirmation, presence: true, if: -> { new_record? || crypted_password_chabged? }
   validates :email, presence: true, uniqueness: true
+
+  #userが削除されたら、関連するpostも削除される
+  has_many :posts, dependent: :destroy
 end
