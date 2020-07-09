@@ -1,0 +1,5 @@
+= form_with model: post, local: true do |f|
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control'
+  = f.submit nil, class: 'btn btn-raised btn-primary'
