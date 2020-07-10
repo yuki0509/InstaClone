@@ -83,3 +83,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 #FontAwesome利用のgem
 gem 'font-awesome-sass'
+#ダミーデータ生成
+gem 'faker'
+
