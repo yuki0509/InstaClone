@@ -77,12 +77,11 @@ gem 'pry-byebug'
 gem 'annotate'
 # 国際化
 gem 'rails-i18n'
-#画像投稿
+# 画像投稿
 gem 'carrierwave'
-#画像リサイズ
+# 画像リサイズ
 gem 'mini_magick'
-#FontAwesome利用のgem
+# FontAwesome利用のgem
 gem 'font-awesome-sass'
-#ダミーデータ生成
+# ダミーデータ生成
 gem 'faker'
-

@@ -20,7 +20,7 @@
 class Post < ApplicationRecord
   validates :body, presence: true, length: { maximum: 1000 }
   validates :images, presence: true
-  #imagesカラムにアップローダークラスをマウントする。carrierwaveの実装にはこの作業が必要。
+  # imagesカラムにアップローダークラスをマウントする。carrierwaveの実装にはこの作業が必要。
   mount_uploaders :images, ImageUploader
   belongs_to :user
 end

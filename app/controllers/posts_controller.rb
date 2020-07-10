@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  #sorceryで用意されているメソッド
+  # sorceryで用意されているメソッド
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    #N+1問題に関係する
+    # N+1問題に関係する
     @posts = Post.all.includes(:user).order(created_at: :desc)
   end
 
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    if @post.save 
+    if @post.save
       redirect_to posts_path, success: '投稿を作成しました'
     else
       flash.now[:danger] = '投稿作成を失敗しました'
@@ -41,16 +41,15 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
-    #削除失敗したら、例外処理が起こる
+    # 削除失敗したら、例外処理が起こる
     @post.destroy!
     redirect_to posts_path, success: '投稿を削除しました'
   end
-  
 
   private
+
   def post_params
-    #imagesは複数画像を配列形式で受け取るためこのように書き必要がある
+    # imagesは複数画像を配列形式で受け取るためこのように書き必要がある
     params.require(:post).permit(:body, images: [])
   end
-  
 end
