@@ -26,4 +26,9 @@ class User < ApplicationRecord
 
   #userが削除されたら、関連するpostも削除される
   has_many :posts, dependent: :destroy
+
+  def own?(object)
+    self.id == object.user_id
+  end
+  
 end

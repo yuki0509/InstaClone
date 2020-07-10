@@ -11,7 +11,7 @@ module InstaClone
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # css・jsファイル,ルーティング,testファイルが生成されないように設定
+    # css・jsファイル,ルーティング,testファイル,helperファイルが生成されないように設定
     config.generators do |g|
       g.assets false
       g.skip_routes true

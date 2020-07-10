@@ -1,5 +1,9 @@
 = form_with model: post, local: true do |f|
   .form-group
+    = f.label :images
+    //multiple: trueで複数画像投稿できる
+    = f.file_field :images, multiple: true,class: 'form-control'
+  .form-group
     = f.label :body
     = f.text_area :body, class: 'form-control'
   = f.submit nil, class: 'btn btn-raised btn-primary'

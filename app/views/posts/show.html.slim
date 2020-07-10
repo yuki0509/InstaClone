@@ -1,2 +1,18 @@
-h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+.post-detail.card
+  .image-box
+    .swiper-container
+      .swiper-wrapper
+        - @post.images.each do |image|
+          .swiper-slide
+            = image_tag image.url
+      .swiper-pagination
+  .image-info-box
+    .profile-box.p-3
+      .d-flex.align-items-center
+        = @post.user.name
+        - if current_user&.own?(@post)
+          .ml-auto
+            = link_to post_path(@post), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'} do
+              = icon 'far', 'trash-alt', class: 'fa-lg'
+            = link_to edit_post_path(@post) do
+              = icon 'far', 'edit', class: 'fa-lg'

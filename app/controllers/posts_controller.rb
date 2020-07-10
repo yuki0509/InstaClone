@@ -39,13 +39,14 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     #削除失敗したら、例外処理が起こる
     @post.destroy!
-    redirect_to posts_path, flash: '投稿を削除しました'
+    redirect_to posts_path, success: '投稿を削除しました'
   end
   
 
   private
   def post_params
-    params.require(:post).permit(:body)
+    #imagesは複数画像を配列形式で受け取るためこのように書き必要がある
+    params.require(:post).permit(:body, images: [])
   end
   
 end
