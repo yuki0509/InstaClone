@@ -2,6 +2,7 @@
 $(function() {
   new Swiper('.swiper-container', {
 
+    //スクロールバー
     scrollbar: {
       el: '.swiper-scrollbar',
       hide: true,
