@@ -5,7 +5,8 @@
         - @post.images.each do |image|
           .swiper-slide
             = image_tag image.url
-      .swiper-pagination
+      //スクロールバーの実装
+      .swiper-scrollbar
   .image-info-box
     .profile-box.p-3
       .d-flex.align-items-center
