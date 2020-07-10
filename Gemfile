@@ -79,5 +79,7 @@ gem 'annotate'
 gem 'rails-i18n'
 #画像投稿
 gem 'carrierwave'
+#画像リサイズ
+gem 'mini_magick'
 #FontAwesome利用のgem
 gem 'font-awesome-sass'
