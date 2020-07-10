@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
+  #sorceryで用意されているメソッド
+  before_action :require_login, only: %i[new create edit update destroy]
+
   def index
-    @posts = current_user.posts.all
+    #N+1問題に関係する
+    @posts = Post.all.includes(:user).order(created_at: :desc)
   end
 
   def new
