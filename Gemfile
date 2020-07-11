@@ -85,3 +85,5 @@ gem 'mini_magick'
 gem 'font-awesome-sass'
 # ダミーデータ生成
 gem 'faker'
+# ページネーション追加
+gem 'kaminari'
