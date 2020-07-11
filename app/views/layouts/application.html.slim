@@ -10,8 +10,9 @@ html
   body
     /sorceryが提供するメソッド（logged_in? -> ログインの有無をtrue or falseで返す)
     - if logged_in?
-      = render 'shared/before_login_header' 
+      = render 'shared/header' 
     - else
       = render 'shared/before_login_header' 
     = render 'shared/flash_messages' 
-    = yield
+    .main
+      = yield

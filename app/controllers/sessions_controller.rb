@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = login(params[:session][:email], params[:session][:password])
     if user
       # sorceryのメソッド。コードで指定したページではなくてURLに保存されたページに移動させる。
-      redirect_back_or_to(root_path, success: 'ログインしました')
+      redirect_back_or_to(posts_path, success: 'ログインしました')
     else
       flash.now[:danger] = 'ログイン失敗です。'
       render :new
