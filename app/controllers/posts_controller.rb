@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     # N+1問題に関係する。ページネーション追加（１ページあたり１５件表示させる）
-    @posts = Post.all.includes(:user).page(params[:page]).order(created_at: :desc)
+    @posts = Post.all.includes(:user).page(params[:page]).per(15).order(created_at: :desc)
   end
 
   def new
