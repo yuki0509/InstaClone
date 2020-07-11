@@ -1,5 +1,5 @@
 puts 'Start inserting seed "users" ...'
-3.times do
+15.times do
   user = User.create(
     #ドラゴンボールのキャラクターを入れました！
     name: Faker::JapaneseMedia::DragonBall.character,
