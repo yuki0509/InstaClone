@@ -23,4 +23,6 @@ class Post < ApplicationRecord
   # imagesカラムにアップローダークラスをマウントする。carrierwaveの実装にはこの作業が必要。
   mount_uploaders :images, ImageUploader
   belongs_to :user
+  # 一つの投稿は複数のコメントを持つ
+  has_many :comments
 end
