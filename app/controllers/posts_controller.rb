@@ -22,7 +22,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    p @post = Post.find(params[:id])
+    
+    p @comments = @post.comments
+    @comment = Comment.new
   end
 
   def edit

@@ -17,3 +17,20 @@
               = icon 'far', 'trash-alt', class: 'fa-lg'
             = link_to edit_post_path(@post) do
               = icon 'far', 'edit', class: 'fa-lg'
+    hr.m-0
+    .post-body.p-3
+      / 投稿の本文
+      .row.no-gutters
+        .col-10
+          = simple_format(@post.body)
+      hr
+        / コメント一覧
+      = render 'comments/comments', comments: @comments
+      hr.m-0
+      / .post-comment.p-3
+      /   = render 'comments/form', post: @post, comment: @comment
+
+        div
+          = form_with model: [@post, @comment],local: true do |f|
+            = f.text_field :body, placeholder: 'コメント'
+            = f.submit '投稿', class: 'btn btn-primary btn-raised'
