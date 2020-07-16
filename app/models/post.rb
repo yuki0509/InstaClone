@@ -24,5 +24,5 @@ class Post < ApplicationRecord
   mount_uploaders :images, ImageUploader
   belongs_to :user
   # 一つの投稿は複数のコメントを持つ
-  has_many :comments, dependent: :destory
+  has_many :comments, dependent: :destroy
 end
