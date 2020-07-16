@@ -4,24 +4,25 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params)
-    @comment.save!
-    redirect_to post_path(@comment.post)
+    @comment.save
+    #create.js.slimをクライアントサイドに返す。
   end
   
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
+    #edit.js.slimをクライアントサイドに返す。
   end
   
   def update
-    @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    redirect_to posts_path
+    @comment = current_user.comments.find(params[:id])
+    @comment.update(comment_update_params)
+    #update.js.slimをクライアントサイドに返す。
   end
   
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     @comment.destroy!
-    redirect_to posts_path
+    #destroy.js.slimをクライアントサイドに返す。
   end
   
   private
@@ -29,6 +30,10 @@ class CommentsController < ApplicationController
   def comment_params
     #mergeメソッドはハッシュ同士を結合させるメソッド。
     params.require(:comment).permit(:body).merge(post_id: params[:post_id])
+  end
+  
+  def comment_update_params
+    params.require(:comment).permit(:body)
   end
   
 end
