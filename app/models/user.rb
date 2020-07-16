@@ -27,7 +27,7 @@ class User < ApplicationRecord
   # userが削除されたら、関連するpostも削除される
   has_many :posts, dependent: :destroy
   # 一人のユーザーは複数のコメントを持つ
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def own?(object)
     id == object.user_id

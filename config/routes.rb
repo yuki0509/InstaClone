@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: %i[new create]
-  #shallowオプション。show,edit,update,destroyのようにposts/:post_id/comments/:idを使うアクションのURLをcomments/:idという風に短くする。
+  # shallowオプション。show,edit,update,destroyのようにposts/:post_id/comments/:idを使うアクションのURLをcomments/:idという風に短くする。
   resources :posts, shallow: true do
     resources :comments, only: %i[create edit update destroy]
   end
