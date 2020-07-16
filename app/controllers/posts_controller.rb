@@ -22,7 +22,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
+    # 詳細画面にコメントを表示するためにインスタンス変数追加。
+    @comments = @post.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit

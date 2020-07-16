@@ -1,0 +1,17 @@
+div id="comment-#{comment.id}" 
+  .row.no-gutters
+    .col-2
+    .col-9
+      span.font-weight-bold.pr-1
+        /N+1問題の発生
+        = comment.user.name
+      = comment.body
+    .col-1
+      - if current_user&.own?(comment)
+      .ml-auto
+        /remote: trueでdate-remote属性を付与。コントローラーにAjaxリクエストを送信。リクエストをうけとったコントローラーはviewsから適切なjsファイルを探してクライアントに返す。
+        = link_to comment_path(comment), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
+          = icon 'far', 'trash-alt', class: 'fa-sm'
+        = link_to edit_comment_path(comment), remote: true do
+          = icon 'far', 'edit', class: 'fa-sm'
+  hr

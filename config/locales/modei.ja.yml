@@ -12,6 +12,8 @@ ja:
       post:
         body: 本文
         images: 画像
+      comment: 
+        body: コメント
   attributes:
     created_at: 登録日
     updated_at: 更新日

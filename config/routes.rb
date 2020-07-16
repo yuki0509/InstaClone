@@ -7,6 +7,11 @@
 #                    logout DELETE /logout(.:format)                                                                        sessions#destroy
 #                     users POST   /users(.:format)                                                                         users#create
 #                  new_user GET    /users/new(.:format)                                                                     users#new
+#             post_comments POST   /posts/:post_id/comments(.:format)                                                       comments#create
+#              edit_comment GET    /comments/:id/edit(.:format)                                                             comments#edit
+#                   comment PATCH  /comments/:id(.:format)                                                                  comments#update
+#                           PUT    /comments/:id(.:format)                                                                  comments#update
+#                           DELETE /comments/:id(.:format)                                                                  comments#destroy
 #                     posts GET    /posts(.:format)                                                                         posts#index
 #                           POST   /posts(.:format)                                                                         posts#create
 #                  new_post GET    /posts/new(.:format)                                                                     posts#new
@@ -28,5 +33,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: %i[new create]
-  resources :posts
+  # shallowオプション。show,edit,update,destroyのようにposts/:post_id/comments/:idを使うアクションのURLをcomments/:idという風に短くする。
+  resources :posts, shallow: true do
+    resources :comments, only: %i[create edit update destroy]
+  end
 end

@@ -1,0 +1,7 @@
+- if @comment.errors.present?
+  | alert("#{@comment.errors.full_messages.join('\n')}");
+- else
+  /prependメソッド。対象要素内に要素を追加する
+  | $('.comments-box').prepend("#{j render('comments/comment', post: @post, comment: @comment)}");
+  /フォームに入ったままのコメントを消す
+  | $('.input-comment-body').val('');
