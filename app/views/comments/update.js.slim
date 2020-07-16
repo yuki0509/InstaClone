@@ -2,4 +2,5 @@
   | alert("#{@comment.errors.full_messages.join('\n')}");
 - else
   | $("#comment-#{@comment.id}").html("#{j render('comments/comment', comment: @comment)}");
+  /modal.('hide')でモーダルを非表示にする。
   | $("#comment-edit-modal").modal('hide');

@@ -28,10 +28,11 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    #mergeメソッドはハッシュ同士を結合させるメソッド。
+    #mergeメソッドはハッシュ同士を結合させるメソッド。フォームではpost_idの値を送信することができないため、後からmergeメソッドでpost_idの値をくっつける。
     params.require(:comment).permit(:body).merge(post_id: params[:post_id])
   end
   
+  #commentの値しか変更点がないため、comment_paramsとは別にメソッドを設定。
   def comment_update_params
     params.require(:comment).permit(:body)
   end
