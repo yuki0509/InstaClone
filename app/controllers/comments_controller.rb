@@ -5,24 +5,24 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.save
-    # create.js.slimをクライアントサイドに返す。
+    # create.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
   end
 
   def edit
     @comment = current_user.comments.find(params[:id])
-    # edit.js.slimをクライアントサイドに返す。
+    # edit.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
   end
 
   def update
     @comment = current_user.comments.find(params[:id])
     @comment.update(comment_update_params)
-    # update.js.slimをクライアントサイドに返す。
+    # update.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
   end
 
   def destroy
     @comment = current_user.comments.find(params[:id])
     @comment.destroy!
-    # destroy.js.slimをクライアントサイドに返す。
+    # destroy.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
   end
 
   private
