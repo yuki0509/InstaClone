@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    # N+1問題に関係する
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    # N+1問題に関係する。ページネーション追加(paramsで現在のページ数を受け取る)
+    @posts = Post.all.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   def new
