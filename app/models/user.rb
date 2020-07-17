@@ -28,6 +28,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   # 一人のユーザーは複数のコメントを持つ
   has_many :comments, dependent: :destroy
+  # 一人のユーザーは複数のいいねができる
+  has_many :likes, dependent: :destroy
+
 
   def own?(object)
     id == object.user_id

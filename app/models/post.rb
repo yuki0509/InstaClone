@@ -25,4 +25,6 @@ class Post < ApplicationRecord
   belongs_to :user
   # 一つの投稿は複数のコメントを持つ
   has_many :comments, dependent: :destroy
+  #一つの投稿は複数のいいねを持っている
+  has_many :likes, dependent: :destroy
 end

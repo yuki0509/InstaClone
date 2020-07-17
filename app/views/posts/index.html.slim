@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-8.col-12
-      //@postsから自動類推してpostなどの変数を作ってくれる
+      /@postsから自動類推してpostなどの変数を作ってくれる
       = render @posts
-      //ページネーションの実装。aタグにhref='/?page=3'などの属性を付与する。
+      /ページネーションの実装。aタグにhref='/?page=3'などの属性を付与する。
       = paginate @posts
