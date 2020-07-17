@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   # shallowオプション。show,edit,update,destroyのようにposts/:post_id/comments/:idを使うアクションのURLをcomments/:idという風に短くする。
   resources :posts, shallow: true do
     resources :comments, only: %i[create edit update destroy]
+    resources :likes, only: %i[create destroy]
   end
 end
