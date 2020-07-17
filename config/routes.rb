@@ -12,6 +12,8 @@
 #                   comment PATCH  /comments/:id(.:format)                                                                  comments#update
 #                           PUT    /comments/:id(.:format)                                                                  comments#update
 #                           DELETE /comments/:id(.:format)                                                                  comments#destroy
+#                post_likes POST   /posts/:post_id/likes(.:format)                                                          likes#create
+#                      like DELETE /likes/:id(.:format)                                                                     likes#destroy
 #                     posts GET    /posts(.:format)                                                                         posts#index
 #                           POST   /posts(.:format)                                                                         posts#create
 #                  new_post GET    /posts/new(.:format)                                                                     posts#new
