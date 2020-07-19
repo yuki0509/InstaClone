@@ -28,11 +28,29 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   # 一人のユーザーは複数のコメントを持つ
   has_many :comments, dependent: :destroy
-  # 一人のユーザーは複数のいいねができる
+  # 一人のユーザーは複数の投稿にいいねができる。
   has_many :likes, dependent: :destroy
-
+  # ユーザーがいいねしている投稿を取得できるメソッド。中間テーブルのlikesテーブルを経由してpostsテーブルを参照する。user_idと対になってるpost_idの投稿を取ってくる。
+  has_many :like_posts, through: :likes, source: :post
 
   def own?(object)
     id == object.user_id
   end
+
+  def like(post)
+    
+    self.like_posts << post
+  end
+
+  def unlike(post)
+    # destroyメソッドは引数と一致したものを削除。
+    self.like_posts.destroy(post)
+  end
+
+  # いいねしているかの確認
+  def like?(post)
+    # 配列形式で取得した投稿の中にオブジェクトが含んでいるのかを探す。含んでいたらtrueを返す。
+    self.like_posts.include?(post)
+  end
+  
 end
