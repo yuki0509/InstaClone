@@ -21,6 +21,6 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  #post_idとuser_idの組が１組しかないようにバリデーションをかける
+  # post_idとuser_idの組が１組しかないようにバリデーションをかける
   validates :user_id, uniqueness: { scope: :post_id }
 end

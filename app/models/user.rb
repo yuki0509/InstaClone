@@ -38,19 +38,17 @@ class User < ApplicationRecord
   end
 
   def like(post)
-    
-    self.like_posts << post
+    like_posts << post
   end
 
   def unlike(post)
     # destroyメソッドは引数と一致したものを削除。
-    self.like_posts.destroy(post)
+    like_posts.destroy(post)
   end
 
   # いいねしているかの確認
   def like?(post)
     # 配列形式で取得した投稿の中にオブジェクトが含んでいるのかを探す。含んでいたらtrueを返す。
-    self.like_posts.include?(post)
+    like_posts.include?(post)
   end
-  
 end
