@@ -34,7 +34,7 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
 
   has_many :relationships
-  # 中間テーブルであるrelationshipテーブルを通過して、仮想で作成したfollowテーブル（userテーブル）を参照する。
+  # 中間テーブルであるrelationshipテーブルを通過して、仮想で作成したfollowテーブル（userテーブル）を参照する。フォローしてる人たちを取得する。
   has_many :follwings, through: :relationships, source: :follow
   # 仮想でreverse_of_relationshipテーブル（本当はrelationshipテーブル）を作っている。フォローされる側からuserテーブルを見るようなイメージ。
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -60,4 +60,20 @@ class User < ApplicationRecord
     # 配列形式で取得した投稿の中にオブジェクトが含んでいるのかを探す。含んでいたらtrueを返す。
     like_posts.include?(post)
   end
+
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+  
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+  
+  def followings?(other_user)
+    self.followings.include?(other_user)
+  end
+  
 end
