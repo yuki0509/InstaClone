@@ -33,6 +33,15 @@ class User < ApplicationRecord
   # ユーザーがいいねしている投稿を取得できるメソッド。中間テーブルのlikesテーブルを経由してpostsテーブルを参照する。user_idと対になってるpost_idの投稿を取ってくる。
   has_many :like_posts, through: :likes, source: :post
 
+  has_many :relationships
+  # 中間テーブルであるrelationshipテーブルを通過して、仮想で作成したfollowテーブル（userテーブル）を参照する。
+  has_many :follwings, through: :relationships, source: :follow
+  # 仮想でreverse_of_relationshipテーブル（本当はrelationshipテーブル）を作っている。フォローされる側からuserテーブルを見るようなイメージ。
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  # 仮想で作ったreverse_of_relationshipsテーブルを経由して、userテーブルを参照する。フォロワーを取得するメソッド。
+  has_many :followers, through: :reverse_of_relationships, source: :user
+
+
   def own?(object)
     id == object.user_id
   end
