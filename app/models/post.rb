@@ -25,4 +25,8 @@ class Post < ApplicationRecord
   belongs_to :user
   # 一つの投稿は複数のコメントを持つ
   has_many :comments, dependent: :destroy
+  # 一つの投稿は複数のいいねを持っている
+  has_many :likes, dependent: :destroy
+  # 投稿にいいねしているユーザーを取得できるメソッド。likesテーブルを経由して、usersテーブルを参照する。
+  has_many :like_users, through: :likes, source: :user
 end

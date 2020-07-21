@@ -1,0 +1,8 @@
+/posts/show.html.slimの@postをローカル変数postに代入
+div id="like_area-#{post.id}"
+  / 投稿がいいねされている場合
+  - if current_user.like?(post)
+    = render 'unlike', post: post
+  / 投稿がいいねされていない場合
+  - else
+    = render 'like', post: post
