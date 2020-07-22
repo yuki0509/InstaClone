@@ -36,7 +36,7 @@ class User < ApplicationRecord
   # 仮想のactive_relationshipモデルを作っている(本来はrelationshipモデル)。follower_idを外部キーに指定して、フォローしてる人を取得する。
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   # 仮想のpassive_relationshipモデルを作っている(本来はrelationshipモデル)。followed_idを外部キーに指定して、フォロワーを取得する。
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :deatroy
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   # ユーザーがフォローしている人の値を取得する。
   has_many :following, through: :active_relationships, source: :followed
   # ユーザーのフォロワーの値を取得する。
@@ -67,11 +67,11 @@ class User < ApplicationRecord
   end
   
   def unfollow(other_user)
-    self.avtice_relationships.find_by(followed_id: other_user.id).destroy
+    self.following.destroy(other_user)
   end
   
   def followings?(other_user)
-    self.followings.include?(other_user)
+    self.following.include?(other_user)
   end
   
 end
