@@ -74,4 +74,5 @@ class User < ApplicationRecord
     self.following.include?(other_user)
   end
   
+  scope :recent, -> { order(created_at: :desc) }
 end
