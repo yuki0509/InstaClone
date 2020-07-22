@@ -2,28 +2,24 @@
 #
 # Table name: relationships
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  follow_id  :bigint
-#  user_id    :bigint
+#  id          :bigint           not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  followed_id :integer          not null
+#  follower_id :integer          not null
 #
 # Indexes
 #
-#  index_relationships_on_follow_id              (follow_id)
-#  index_relationships_on_user_id                (user_id)
-#  index_relationships_on_user_id_and_follow_id  (user_id,follow_id) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_rails_...  (follow_id => users.id)
-#  fk_rails_...  (user_id => users.id)
+#  index_relationships_on_followed_id                  (followed_id)
+#  index_relationships_on_follower_id                  (follower_id)
+#  index_relationships_on_follower_id_and_followed_id  (follower_id,followed_id) UNIQUE
 #
 class Relationship < ApplicationRecord
-  belongs_to :user
-  # followテーブルはないので、ここでもclass_name: 'User'としてモデル名を指定する。
-  belongs_to :follow, class_name: 'User'
-
-  validates :user_id, presence: true
-  validates :follow_id, presence: true
+  # 仮想のfollowrモデルを作っている。実際はuserモデルであるためclass_nameオプションをつける。
+  belongs_to :follower, class_name: 'User'
+  # 仮想のfollowedモデルを作っている。実際はuserモデルであるためclass_nameオプションをつける。
+  belongs_to :followed, class_name: 'User'
+  validates :follower_id, presence: true
+  validates :followed_id, presence: true
+  validates :follower_id, uniqueness: { scope: :followed_id }
 end

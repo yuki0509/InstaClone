@@ -33,13 +33,14 @@ class User < ApplicationRecord
   # ユーザーがいいねしている投稿を取得できるメソッド。中間テーブルのlikesテーブルを経由してpostsテーブルを参照する。user_idと対になってるpost_idの投稿を取ってくる。
   has_many :like_posts, through: :likes, source: :post
 
-  has_many :relationships
-  # 中間テーブルであるrelationshipテーブルを通過して、仮想で作成したfollowテーブル（userテーブル）を参照する。フォローしてる人たちを取得する。
-  has_many :follwings, through: :relationships, source: :follow
-  # 仮想でreverse_of_relationshipテーブル（本当はrelationshipテーブル）を作っている。フォローされる側からuserテーブルを見るようなイメージ。
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-  # 仮想で作ったreverse_of_relationshipsテーブルを経由して、userテーブルを参照する。フォロワーを取得するメソッド。
-  has_many :followers, through: :reverse_of_relationships, source: :user
+  # 仮想のactive_relationshipモデルを作っている(本来はrelationshipモデル)。follower_idを外部キーに指定して、フォローしてる人を取得する。
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  # 仮想のpassive_relationshipモデルを作っている(本来はrelationshipモデル)。followed_idを外部キーに指定して、フォロワーを取得する。
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :deatroy
+  # ユーザーがフォローしている人の値を取得する。
+  has_many :following, through: :active_relationships, source: :followed
+  # ユーザーのフォロワーの値を取得する。
+  has_many :followers, through: :passive_relationships, source: :follower
 
 
   def own?(object)
@@ -62,14 +63,11 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    self.following << other_user
   end
   
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    self.avtice_relationships.find_by(followed_id: other_user.id).destroy
   end
   
   def followings?(other_user)
