@@ -9,6 +9,7 @@ class PostsController < ApplicationController
               else
                 Post.all.includes(:user).page(params[:page])
               end
+    # 登録日が新しい順に５件表示
     @users = User.recent.limit(5)
   end
 
