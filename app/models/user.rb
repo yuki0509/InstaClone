@@ -78,5 +78,5 @@ class User < ApplicationRecord
     Post.where(user_id: following_ids << id)
   end
 
-  scope :recent, -> { order(created_at: :desc) }
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 end
