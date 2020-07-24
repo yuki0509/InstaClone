@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   def index
     # N+1問題に関係する。ページネーション追加(paramsで現在のページ数を受け取る)
     @posts = if current_user
-                current_user.feed.includes(:user).page(params[:page])
-              else
-                Post.all.includes(:user).page(params[:page])
+               current_user.feed.includes(:user).page(params[:page])
+             else
+               Post.all.includes(:user).page(params[:page])
               end
     # 登録日が新しい順に５件表示
     @users = User.recent.limit(5)

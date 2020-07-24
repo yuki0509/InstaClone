@@ -42,7 +42,6 @@ class User < ApplicationRecord
   # ユーザーのフォロワーの値を取得する。
   has_many :followers, through: :passive_relationships, source: :follower
 
-
   def own?(object)
     id == object.user_id
   end
@@ -64,19 +63,19 @@ class User < ApplicationRecord
 
   # フォローするメソッド。
   def follow(other_user)
-    self.following << other_user
+    following << other_user
   end
-  
+
   # フォローを外すメソッド。
   def unfollow(other_user)
-    self.following.destroy(other_user)
+    following.destroy(other_user)
   end
-  
+
   # フォローしているかどうかを確かめるメソッド。
   def followings?(other_user)
-    self.following.include?(other_user)
+    following.include?(other_user)
   end
-  
+
   # フィード表示するメソッド。フォローしているユーザーと自分の投稿だけ見れるようにする・
   def feed
     # following_idsでfollowingで取得できるユーザーのidのみを取得する。
