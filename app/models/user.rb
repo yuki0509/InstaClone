@@ -74,5 +74,9 @@ class User < ApplicationRecord
     self.following.include?(other_user)
   end
   
+  def feed
+    Post.where(user_id: following_ids << id)
+  end
+
   scope :recent, -> { order(created_at: :desc) }
 end
