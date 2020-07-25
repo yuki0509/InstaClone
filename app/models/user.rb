@@ -15,6 +15,9 @@
 #  index_users_on_email  (email) UNIQUE
 #
 class User < ApplicationRecord
+  # 新規登録された順に引数の数だけ取得する。
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+
   # sorceryで追加された
   authenticates_with_sorcery!
 
@@ -81,7 +84,4 @@ class User < ApplicationRecord
     # following_idsでfollowingで取得できるユーザーのidのみを取得する。
     Post.where(user_id: following_ids << id)
   end
-
-  # 新規登録された順に引数の数だけ取得する。
-  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 end
