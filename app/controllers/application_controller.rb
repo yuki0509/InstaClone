@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   # 検索フォームはナビゲーションバーに共通して、設置してあるため、ApplicationControllerにメソッドをかく。　
   def set_search_posts_form
     @search_form = SearchPostsForm.new(search_post_params)
   end
-  
+
   def search_post_params
     # fetchメソッド。params[:q]の値がないなら、{}を取ってくる。
     params.fetch(:q, {}).permit(:body)
   end
-  
 end

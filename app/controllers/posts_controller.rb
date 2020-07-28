@@ -61,7 +61,6 @@ class PostsController < ApplicationController
     # @search_formはSearchFormsFormのインスタンス。searchメソッドで検索結果を取得する。
     @posts = @search_form.search.includes(:user)
   end
-  
 
   private
 
