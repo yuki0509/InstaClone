@@ -8,12 +8,12 @@ class SearchPostsForm
 
   def search
     # ここでのbodyはSearchPostFormのオブジェクトの属性。attribute :bodyでオブジェクトにbody属性が追加された。
-    scope = if body.present?
-              # 重複なく投稿を取得する。この場合は、postオブジェクトのidが違うため重複してるオブジェクトはなく、allメソッドとしていることは同じ。
-              Post.distinct.body_contain(body)
-            else
-              # 重複なく投稿を取得
-              Post.distinct
-            end
+    if body.present?
+      # 重複なく投稿を取得する。この場合は、postオブジェクトのidが違うため重複してるオブジェクトはなく、allメソッドとしていることは同じ。
+      Post.distinct.body_contain(body)
+    else
+      # 重複なく投稿を取得
+      Post.distinct
+    end
   end
 end
