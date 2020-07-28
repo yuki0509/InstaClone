@@ -1,0 +1,4 @@
+/ ActiveRecordを継承してないため、本来はmodelには何も書かないがフォームオブジェクトで書いているため、ActiveRecordを継承したmodelを使用したフォームと同じ書き方をする。
+= form_with model: search_form, url: search_posts_path, method: :get, scope: :q,local: true do |f|
+  = f.search_field :body, placeholder: '本文'
+  = f.submit 'Search'
