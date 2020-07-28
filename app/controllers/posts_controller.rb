@@ -57,6 +57,12 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました'
   end
 
+  def search
+    # @search_formはSearchFormsFormのインスタンス。searchメソッドで検索結果を取得する。
+    @posts = @search_form.search.includes(:user)
+  end
+  
+
   private
 
   def post_params
