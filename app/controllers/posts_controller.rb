@@ -4,11 +4,19 @@ class PostsController < ApplicationController
 
   def index
     # N+1問題に関係する。ページネーション追加(paramsで現在のページ数を受け取る)
-    @posts = Post.all.includes(:user).page(params[:page]).order(created_at: :desc)
+    @posts = if current_user
+               # 表示する投稿を自分の投稿とフォローしてるユーザーの投稿のみとする。
+               current_user.feed.includes(:user).page(params[:page])
+             else
+               # 全ての投稿を表示する。
+               Post.all.includes(:user).page(params[:page])
+             end
+    # 登録日が新しい順に５件表示
+    @users = User.recent(5)
   end
 
   def new
-    @post = current_user.posts.new
+    @post = Post.new
   end
 
   def create

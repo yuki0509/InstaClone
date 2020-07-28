@@ -1,7 +1,25 @@
 .container
   .row
     .col-md-8.col-12
-      /@postsから自動類推してpostなどの変数を作ってくれる
-      = render @posts
+      - if @posts.present?
+        /@postsから自動類推してpostなどの変数を作ってくれる
+        = render @posts
+      - else
+        .text-center.font-weight-bold
+          | 投稿がありません
       /ページネーションの実装。aタグにhref='/?page=3'などの属性を付与する。
       = paginate @posts
+    .col-md-4.col-12
+      / loggen_in。sorceryで用意されたメソッド。
+      - if logged_in?
+        .profile-box.mb-3
+          = current_user.name
+      .users-box
+        .card
+          .card-header
+            | ユーザー
+          .card-body
+            / app/views/users/_user.html.slimを使用
+            = render @users
+          .card-footer
+            = link_to 'すべて見る', users_path
