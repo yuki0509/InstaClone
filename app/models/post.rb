@@ -18,6 +18,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  # 引数wordと部分一致するbodyを検索する。('body LIKE ?', "%#{word}%")では?に%word%が代入され、Like検索ができる。
+  scope :body_contain, ->(word){ where('body LIKE ?', "%#{word}%") }
+
   validates :body, presence: true, length: { maximum: 1000 }
   validates :images, presence: true
   # imagesカラムにアップローダークラスをマウントする。carrierwaveの実装にはこの作業が必要。
