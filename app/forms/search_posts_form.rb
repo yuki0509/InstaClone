@@ -3,7 +3,7 @@ class SearchPostsForm
   include ActiveModel::Model
   # attributeメソッドが使えるようになる。オブジェクトの属性を型指定して使えるようにすることができる。
   include ActiveModel::Attributes
-  # body属性を追加する。ActiveRecordを使用した時と同じように扱えるので。bodyカラムとしても扱える。
+  # body属性を追加する。ActiveRecordを使用した時と同じように扱えるので。object.bodyでbodyの値にアクセスできる。
   attribute :body, :string
 
   def search
