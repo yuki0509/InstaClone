@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-6.offset-md-3
+    .col-md-10.offset-md-1
       .card
         .card-body
           .text-center.mb-3
@@ -12,5 +12,4 @@
             = render 'follow_area', user: @user
           hr
           .row
-            - if current_user
-              = render partial: 'users/post', collection: @posts
+            = render partial: 'posts/thumbnail_post', collection: @user.posts
