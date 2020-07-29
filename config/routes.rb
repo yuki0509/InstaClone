@@ -14,6 +14,7 @@
 #                   comment PATCH  /comments/:id(.:format)                                                                  comments#update
 #                           PUT    /comments/:id(.:format)                                                                  comments#update
 #                           DELETE /comments/:id(.:format)                                                                  comments#destroy
+#              search_posts GET    /posts/search(.:format)                                                                  posts#search
 #                     posts GET    /posts(.:format)                                                                         posts#index
 #                           POST   /posts(.:format)                                                                         posts#create
 #                  new_post GET    /posts/new(.:format)                                                                     posts#new
@@ -42,6 +43,10 @@ Rails.application.routes.draw do
   # shallowオプション。show,edit,update,destroyのようにposts/:post_id/comments/:idを使うアクションのURLをcomments/:idという風に短くする。
   resources :posts, shallow: true do
     resources :comments, only: %i[create edit update destroy]
+    # /posts/でurlを始めたい場合にcollectionオプションを使う。/posts/:id/でurlを始めたい場合は、memberオプションを使う。
+    collection do
+      get 'search'
+    end
   end
 
   resources :likes, only: %i[create destroy]
