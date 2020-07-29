@@ -3,7 +3,14 @@
     .col-md-6.offset-md-3
       .card
         .card-body
+          .text-center.mb-3
+            a.btn.btn-raised.btn-warning href='#'
+              | プロフィール編集
           .profile.text-center.mb-3
             = @user.name
           .text-center
-            = render 'follow_area', user: @user 
+            = render 'follow_area', user: @user
+          hr
+          .row
+            - if current_user
+              = render partial: 'users/post', collection: @posts
