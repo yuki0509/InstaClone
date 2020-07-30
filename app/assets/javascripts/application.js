@@ -10,4 +10,4 @@
 //= require swiper/swiper-bundle.js
 //assets/javasctipt/swiper.jsを読み込む
 //= require swiper.js
-
+//= require preview.js

@@ -10,9 +10,9 @@
                 = form_with model: @user_account, url: mypage_account_path, local: true do |f|
                   .form-group
                     = f.label :avatar
-                    = f.file_field :avatar, class: 'form-control'
+                    = f.file_field :avatar, class: 'form-control', id: 'user_img'
                     = f.hidden_field :avatar_cache
-                    = image_tag current_user.avatar.url if current_user.avatar.present?
+                    = image_tag current_user.avatar.url, id: 'img_prev' if current_user.avatar.present?
                   .form-group
                     = f.label :name
                     = f.text_field :name, class: 'form-control'
