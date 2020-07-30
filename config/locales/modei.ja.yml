@@ -5,10 +5,11 @@ ja:
       post: 投稿
     attributes: 
       user:
-        name: 名前
+        name: ユーザー名
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        avatar: アバター
       post:
         body: 本文
         images: 画像
