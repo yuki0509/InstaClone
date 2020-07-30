@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-8.offset-md-2
+      .card
+        .card-body
+          .row
+            .col-md-3
+            .col-md-9
+              .mypage_content
+                = form_with model: @user_account, url: mypage_account_path, local: true do |f|
+                  .form-group
+                    = f.label :name
+                    = f.text_field :name, class: 'form-control'
+                  = f.submit
+
