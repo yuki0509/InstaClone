@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
   # namespaceはurlのパスとディレクトリ構成を変更する。マイページにいろいろ追加するので、マイページ用のディレクトリとurlを作る。
   namespace :mypage do
-    # ログインユーザーにとってアカウント編集ページは一つしかないので、単一resource。index用のルーティングは存在しない。
+    # ログインユーザーにとってアカウント編集ページは一つしかないので、単一のresourceを使う。index用のルーティングは存在しない。
     resource :account, only: %i[edit update] 
   end
 
