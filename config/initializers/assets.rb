@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 
 # mypage.jsとmypage.cssを本番環境でプリコンパイルするために必要。
-Rails.application.config.assets.precompile += %w( mypage.js mypage.css )
+Rails.application.config.assets.precompile += %w[mypage.js mypage.css]
