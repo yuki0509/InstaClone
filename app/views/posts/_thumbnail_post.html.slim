@@ -1,0 +1,4 @@
+.col-md-4.mb-3
+  / パーシャル内で使えるインスタンス変数は、パーシャル名と同じ名前の変数が使える。（この場合は、thumbnail_postという変数が使える。）
+  = link_to post_path(thumbnail_post), class: 'thumbs' do
+    = image_tag thumbnail_post.images.first.url
