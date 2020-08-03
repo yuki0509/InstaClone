@@ -119,3 +119,10 @@ img {
     object-fit: cover;
   }
 }
+
+#header-activities {
+  width: 400px;
+  .dropdown-item {
+    font-size: 12px;
+  }
+}
