@@ -32,4 +32,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   # 投稿にいいねしているユーザーを取得できるメソッド。likesテーブルを経由して、usersテーブルを参照する。
   has_many :like_users, through: :likes, source: :user
+  # ポリモーフィック関連づけ
+  has_one :activity, as: :subject, dependent: :destroy
 end

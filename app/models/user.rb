@@ -48,6 +48,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   # ユーザーのフォロワーの値を取得する。
   has_many :followers, through: :passive_relationships, source: :follower
+  # 一人のユーザーは複数の通知がくる
+  has_many :activities, dependent: :destroy
 
   def own?(object)
     id == object.user_id

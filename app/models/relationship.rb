@@ -19,8 +19,19 @@ class Relationship < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   # 仮想のfollowedモデルを作っている。実際はuserモデルであるためclass_nameオプションをつける。
   belongs_to :followed, class_name: 'User'
+  # ポリモーフィック関連づけ。
+  has_one :activity, as: :subject, dependent: :destroy
   validates :follower_id, presence: true
   validates :followed_id, presence: true
   # follower_idとfollowed_idをセットでユニーク制約をかける。同じユーザーへのフォローを複数回できることを禁止する。
   validates :follower_id, uniqueness: { scope: :followed_id }
+
+  after_create_commit :create_activities
+
+  private
+  # self.followedでフォローされたユーザーを取得できる。
+  def create_activities
+    Activity.create(subject: self, user: followed, action_type: :followed_me)
+  end
+  
 end

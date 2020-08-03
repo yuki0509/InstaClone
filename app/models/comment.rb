@@ -20,8 +20,19 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Comment < ApplicationRecord
-  validates :body, presence: true, length: { maximum: 1000 }
-
   belongs_to :user
   belongs_to :post
+  # ポリモーフィック関連づけ
+  has_one :activity, as: :subject, dependent: :destroy
+
+  validates :body, presence: true, length: { maximum: 1000 }
+
+  after_create_commit :create_activities
+
+  private
+  # self.post.userで投稿にコメントされたユーザーを取得できる。
+  def create_activities
+    Activity.create(subject: self, user: self.post.user, action_type: :commented_to_own_post)
+  end
+  
 end

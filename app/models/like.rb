@@ -22,6 +22,17 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
+  # ポリモーフィック関連づけをしている。object.activityで対応するactivityに繋がる。as: :subjectはポリモーフィック関連なのでオブジェクトのクラスを意識する必要がない。
+  has_one :activity, as: :subject, dependent: :destroy
   # post_idとuser_idの組が１組しかないようにバリデーションをかける
   validates :user_id, uniqueness: { scope: :post_id }
+  # データベースにレコードが挿入されるとcreate_activitiesメソッドが呼び出される。
+  after_create_commit :create_activities
+
+  private
+  def create_activities
+    # likeモデルのインスタンスメソッドの中なので、selfはlikeモデルのオブジェクトになる。self.post.userでいいねされた方のユーザーを取得できる。
+    Activity.create(subject: self, user: self.post.user, action_type: :liked_to_own_post)
+  end
+  
 end
