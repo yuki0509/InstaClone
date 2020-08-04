@@ -22,11 +22,12 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  # ポリモーフィック関連づけ
+  # コメントを一度したら、通知は一つしか作成されないので、has_oneを使用する。as: :subjectでポリモーフィック関連づけを行っている。
   has_one :activity, as: :subject, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 1000 }
 
+  # データベースにレコードが挿入されるとcreate_activitiesメソッドが呼び出される。
   after_create_commit :create_activities
 
   private

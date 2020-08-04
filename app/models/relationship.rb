@@ -19,7 +19,7 @@ class Relationship < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   # 仮想のfollowedモデルを作っている。実際はuserモデルであるためclass_nameオプションをつける。
   belongs_to :followed, class_name: 'User'
-  # ポリモーフィック関連づけ。
+  # フォロー機能には一つの通知しか作成されないから、has_oneを使用。as: :subjectでポリモフィック関連づけを行っている。
   has_one :activity, as: :subject, dependent: :destroy
   validates :follower_id, presence: true
   validates :followed_id, presence: true
@@ -29,8 +29,8 @@ class Relationship < ApplicationRecord
   after_create_commit :create_activities
 
   private
-  # self.followedでフォローされたユーザーを取得できる。
   def create_activities
+    # self.followedでフォローされたユーザーを取得できる。
     Activity.create(subject: self, user: followed, action_type: :followed_me)
   end
   

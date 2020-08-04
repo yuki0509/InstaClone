@@ -22,7 +22,7 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  # ポリモーフィック関連づけをしている。object.activityで対応するactivityに繋がる。as: :subjectはポリモーフィック関連なのでオブジェクトのクラスを意識する必要がない。
+  # いいねを一度したら、通知は一つしか作成されないので、has_oneを使用する。as: :subjectでポリモーフィック関連づけを行っている。
   has_one :activity, as: :subject, dependent: :destroy
   # post_idとuser_idの組が１組しかないようにバリデーションをかける
   validates :user_id, uniqueness: { scope: :post_id }

@@ -24,7 +24,7 @@ class Activity < ApplicationRecord
   # モデルでpost_pathなどのパスを使用したい場合は、これを書く必要がある。
   include Rails.application.routes.url_helpers
 
-  # ポリモーフィック関連づけを行っている。
+  # ポリモーフィック関連づけを行っている。object.subjectで対応するオブジェクトをクラスを気にせずに取得できる。
   belongs_to :subject, polymorphic: true
   belongs_to :user
 

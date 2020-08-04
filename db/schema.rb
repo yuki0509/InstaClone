@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_055308) do
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     # subject_typeで、オブジェクトのクラスを判断している。
     t.string "subject_type"
+    # subeject_idで、オブジェクトのidを取得する。
     t.bigint "subject_id"
     t.bigint "user_id"
     t.integer "action_type", null: false
