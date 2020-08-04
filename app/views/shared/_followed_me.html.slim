@@ -1,7 +1,8 @@
-.dropdown
+= link_to read_activity_path(activity), class: "dropdown-item border-bottom #{'read' if activity.read?}", method: :patch do 
   = image_tag activity.subject.follower.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
-  = link_to activity.subject.follower.name, user_path(activity.subject.follower)
+  object
+    = link_to activity.subject.follower.name, user_path(activity.subject.follower)
   | があなたをフォローしました
   .ml-auto
+    / lメソッドで日時を読みやすい形に変更する。formatを指定することで、ロケールファイルに書かれている形式で表示させる。
     = l activity.created_at, format: :short
-.dropdown-driver
