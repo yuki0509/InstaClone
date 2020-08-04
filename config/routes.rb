@@ -23,6 +23,9 @@
 #                           PATCH  /posts/:id(.:format)                                                                     posts#update
 #                           PUT    /posts/:id(.:format)                                                                     posts#update
 #                           DELETE /posts/:id(.:format)                                                                     posts#destroy
+#       edit_mypage_account GET    /mypage/account/edit(.:format)                                                           mypage/accounts#edit
+#            mypage_account PATCH  /mypage/account(.:format)                                                                mypage/accounts#update
+#                           PUT    /mypage/account(.:format)                                                                mypage/accounts#update
 #                     likes POST   /likes(.:format)                                                                         likes#create
 #                      like DELETE /likes/:id(.:format)                                                                     likes#destroy
 #             relationships POST   /relationships(.:format)                                                                 relationships#create
@@ -47,6 +50,12 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+  end
+
+  # namespaceはurlのパスとディレクトリ構成を変更する。マイページにいろいろ追加するので、マイページ用のディレクトリとurlを作る。
+  namespace :mypage do
+    # ログインユーザーにとってアカウント編集ページは一つしかないので、単一のresourceを使う。index用のルーティングは存在しない。
+    resource :account, only: %i[edit update]
   end
 
   resources :likes, only: %i[create destroy]

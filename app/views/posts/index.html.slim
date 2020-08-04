@@ -13,7 +13,8 @@
       / loggen_in。sorceryで用意されたメソッド。
       - if logged_in?
         .profile-box.mb-3
-          = current_user.name
+          = image_tag current_user.avatar.url, size: '50x50', class: 'rounded-circle mr-1'
+          = link_to current_user.name, edit_mypage_account_path
       .users-box
         .card
           .card-header

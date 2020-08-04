@@ -3,9 +3,12 @@
     .col-md-10.offset-md-1
       .card
         .card-body
+          / 未ログイン時を考慮。ログインしていなかったら、current_userで処理が止まる。
+          - if current_user&.id == @user.id
+            .text-center.mb-3
+              = link_to 'プロフィール編集', edit_mypage_account_path, class: 'btn btn-raised btn-warning' 
           .text-center.mb-3
-            a.btn.btn-raised.btn-warning href='#'
-              | プロフィール編集
+            = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
           .profile.text-center.mb-3
             = @user.name
           .text-center

@@ -10,6 +10,7 @@
   .image-info-box
     .profile-box.p-3
       .d-flex.align-items-center
+        = image_tag @post.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1'
         = @post.user.name
         - if current_user&.own?(@post)
           .ml-auto
@@ -25,6 +26,8 @@
     .post-body.p-3
       / 投稿の本文
       .row.no-gutters
+        .col-2
+          = image_tag @post.user.avatar.url, size: '40x40', class: 'rounded-circle'
         .col-10
           = simple_format(@post.body)
       hr
