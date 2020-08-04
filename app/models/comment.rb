@@ -31,9 +31,9 @@ class Comment < ApplicationRecord
   after_create_commit :create_activities
 
   private
+
   # self.post.userで投稿にコメントされたユーザーを取得できる。
   def create_activities
-    Activity.create(subject: self, user: self.post.user, action_type: :commented_to_own_post)
+    Activity.create(subject: self, user: post.user, action_type: :commented_to_own_post)
   end
-  
 end

@@ -41,12 +41,11 @@ class Activity < ApplicationRecord
     # action_typeごとにクライアントに返すページを分ける
     when :commented_to_own_post
       # anchorオプションでanchorリンクが生成される。urlの末尾に#comment-idが追加され、id="comment-id"がついているタグに飛ぶ。
-      post_path(self.subject.post, anchor: "comment-#{subject.id}")
+      post_path(subject.post, anchor: "comment-#{subject.id}")
     when :liked_to_own_post
-      post_path(self.subject.post)
+      post_path(subject.post)
     when :followed_me
-      user_path(self.subject.follower)
+      user_path(subject.follower)
     end
   end
-  
 end

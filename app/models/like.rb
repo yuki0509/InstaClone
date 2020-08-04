@@ -30,9 +30,9 @@ class Like < ApplicationRecord
   after_create_commit :create_activities
 
   private
+
   def create_activities
     # likeモデルのインスタンスメソッドの中なので、selfはlikeモデルのオブジェクトになる。self.post.userでいいねされた方のユーザーを取得できる。
-    Activity.create(subject: self, user: self.post.user, action_type: :liked_to_own_post)
+    Activity.create(subject: self, user: post.user, action_type: :liked_to_own_post)
   end
-  
 end
