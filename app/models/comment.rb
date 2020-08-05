@@ -20,8 +20,20 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Comment < ApplicationRecord
-  validates :body, presence: true, length: { maximum: 1000 }
-
   belongs_to :user
   belongs_to :post
+  # コメントを一度したら、通知は一つしか作成されないので、has_oneを使用する。as: :subjectでポリモーフィック関連づけを行っている。
+  has_one :activity, as: :subject, dependent: :destroy
+
+  validates :body, presence: true, length: { maximum: 1000 }
+
+  # データベースにレコードが挿入されるとcreate_activitiesメソッドが呼び出される。
+  after_create_commit :create_activities
+
+  private
+
+  # self.post.userで投稿にコメントされたユーザーを取得できる。
+  def create_activities
+    Activity.create(subject: self, user: post.user, action_type: :commented_to_own_post)
+  end
 end

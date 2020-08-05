@@ -26,10 +26,12 @@
 #       edit_mypage_account GET    /mypage/account/edit(.:format)                                                           mypage/accounts#edit
 #            mypage_account PATCH  /mypage/account(.:format)                                                                mypage/accounts#update
 #                           PUT    /mypage/account(.:format)                                                                mypage/accounts#update
+#         mypage_activities GET    /mypage/activities(.:format)                                                             mypage/activities#index
 #                     likes POST   /likes(.:format)                                                                         likes#create
 #                      like DELETE /likes/:id(.:format)                                                                     likes#destroy
 #             relationships POST   /relationships(.:format)                                                                 relationships#create
 #              relationship DELETE /relationships/:id(.:format)                                                             relationships#destroy
+#             read_activity PATCH  /activities/:id/read(.:format)                                                           activities#read
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -56,8 +58,15 @@ Rails.application.routes.draw do
   namespace :mypage do
     # ログインユーザーにとってアカウント編集ページは一つしかないので、単一のresourceを使う。index用のルーティングは存在しない。
     resource :account, only: %i[edit update]
+    resources :activities, only: %i[index]
   end
 
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+
+  # urlをactivities/:id/readのみに限定するため、onlyで絞る。
+  resources :activities, only: [] do
+    # memberオプションでactivities/:idというurlが生成される。この場合は、activitiesコントローラーのreadアクションにリクエストを送る。一つしかない場合は、このような書き方ができる。
+    patch :read, on: :member
+  end
 end
