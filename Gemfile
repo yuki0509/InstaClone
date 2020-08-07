@@ -60,7 +60,7 @@ gem 'font-awesome-sass'
 gem 'faker'
 # ページネーション追加
 gem 'kaminari'
-
+# 環境毎に定数管理
 gem 'config'
 
 group :development, :test do
