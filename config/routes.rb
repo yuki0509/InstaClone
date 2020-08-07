@@ -42,7 +42,7 @@
 Rails.application.routes.draw do
   # letter_openerを使用した画面の表示のために必要。localhost:3000/letter_openerでメールを確認することができる
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-  
+
   root to: 'posts#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -72,5 +72,4 @@ Rails.application.routes.draw do
     # memberオプションでactivities/:idというurlが生成される。この場合は、activitiesコントローラーのreadアクションにリクエストを送る。一つしかない場合は、このような書き方ができる。
     patch :read, on: :member
   end
-
 end
