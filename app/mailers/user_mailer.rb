@@ -14,5 +14,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user_to.email, subject: "#{@user_from.name}があなたの投稿にコメントしました")
   end
   
-  
+  def follow 
+    @user_from = params[:user_from]
+    @user_to = params[:user_to]
+    @followed = params[:followed]
+    mail(to: @user_to.email, subject: "#{@user_from.name}があなたをフォローしました")
+  end
 end
