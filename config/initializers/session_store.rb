@@ -7,5 +7,5 @@ InstaClone::Application.config.session_store :redis_store, {
       namespace: 'session' # (session:セッション情報)と表示される
     }
   ],
-  expire_after: 90.minutes
+  expire_after: 1.day
 }
