@@ -7,5 +7,12 @@ class UserMailer < ApplicationMailer
     mail(to: @user_to.email, subject: "#{@user_from.name}があなたの投稿にいいねしました")
   end
   
-
+  def comment_post
+    @user_from = params[:user_from]
+    @user_to = params[:user_to]
+    @post = params[:post]
+    mail(to: @user_to.email, subject: "#{@user_from.name}があなたの投稿にコメントしました")
+  end
+  
+  
 end

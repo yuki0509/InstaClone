@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.save
     # create.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
+    UserMailer.with(user_from: current_user, user_to: @comment.post.user, post: @comment.post).comment_post.deliver_later
   end
 
   def edit
