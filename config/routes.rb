@@ -40,6 +40,9 @@
 
 # annotateで作成された
 Rails.application.routes.draw do
+  # letter_openerを使用した画面の表示のために必要。localhost:3000/letter_openerでメールを確認することができる
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   root to: 'posts#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
