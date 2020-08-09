@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
     # localhost:3000/sidekiqでダッシュボードに繋がる
-    mount Sidekiq::Web, at: "/sidekiq"
+    mount Sidekiq::Web, at: '/sidekiq'
   end
 
   root to: 'posts#index'
