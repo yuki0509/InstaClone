@@ -62,8 +62,9 @@ gem 'faker'
 gem 'kaminari'
 # 環境毎に定数管理
 gem 'config'
-
+# ジョブの永続化のために必要なアダプタ
 gem 'sidekiq'
+# ダッシュボードを表示するために必要
 gem 'sinatra', require: false
 
 group :development, :test do

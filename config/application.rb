@@ -29,6 +29,7 @@ module InstaClone
     # config/locale以下のファイルが読み込めるようにパスを通す
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
+    # ActiveJobのアダプタをsidekiqに設定
     config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
