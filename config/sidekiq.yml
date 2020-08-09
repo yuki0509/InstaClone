@@ -1,0 +1,5 @@
+# 1つのsidekiqプロセスで使用するスレッド数
+concurrency: 25
+queues: 
+  - default
+  - mailers

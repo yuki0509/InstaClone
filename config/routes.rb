@@ -40,8 +40,13 @@
 
 # annotateで作成された
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   # letter_openerを使用した画面の表示のために必要。localhost:3000/letter_openerでメールを確認することができる
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+    # localhost:3000/sidekiqでダッシュボードに繋がる
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
 
   root to: 'posts#index'
   get '/login', to: 'sessions#new'
