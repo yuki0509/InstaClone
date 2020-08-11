@@ -79,6 +79,7 @@ Rails.application.routes.draw do
     # ログインユーザーにとってアカウント編集ページは一つしかないので、単一のresourceを使う。index用のルーティングは存在しない。
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
+    # 通知設定そのものは、ログインユーザーに対して一つしかないため単一リソースで定義する
     resource :notification_setting, only: %i[edit update]
   end
 

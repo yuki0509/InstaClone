@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
     # withメソッドで値を渡してテンプレート側でparamsで受け取ることができる。deliver_laterメソッドは、非同期でメールを送ることができ、development/test環境に適していて、production環境にはsidekiqなどを使う必要がある。
     UserMailer.with(user_from: current_user, user_to: @comment.post.user, post: @comment.post).comment_post.deliver_later if current_user.notification_on_comment?
+    # 通知設定がtrueの時だけメールを送るようにした
   end
 
   def edit
