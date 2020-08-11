@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_055308) do
+ActiveRecord::Schema.define(version: 2020_08_10_094355) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    # subject_typeで、オブジェクトのクラスを判断している。
     t.string "subject_type"
-    # subeject_idで、オブジェクトのidを取得する。
     t.bigint "subject_id"
     t.bigint "user_id"
     t.integer "action_type", null: false
@@ -73,6 +71,9 @@ ActiveRecord::Schema.define(version: 2020_08_01_055308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.boolean "notification_on_comment", default: true
+    t.boolean "notification_on_like", default: true
+    t.boolean "notification_on_follow", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
