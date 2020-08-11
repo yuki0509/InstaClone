@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     # create.js.slimというテンプレートエンジンから生成されたjavascriptをクライアントサイドに返す。
 
     # withメソッドで値を渡してテンプレート側でparamsで受け取ることができる。deliver_laterメソッドは、非同期でメールを送ることができ、development/test環境に適していて、production環境にはsidekiqなどを使う必要がある。
-    UserMailer.with(user_from: current_user, user_to: @comment.post.user, post: @comment.post).comment_post.deliver_later
+    UserMailer.with(user_from: current_user, user_to: @comment.post.user, post: @comment.post).comment_post.deliver_later if current_user.notification_on_comment?
   end
 
   def edit
